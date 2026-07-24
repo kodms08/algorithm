@@ -17,8 +17,6 @@ class Solution {
     int answer = 0;
     
     public int solution(int n, int infection, int[][] edges, int k) {
-
-        
         node = new ArrayList<>();
         
         for(int i=0; i<n; i++) {
@@ -43,27 +41,22 @@ class Solution {
         if(cnt>k+1) return;
         
         if(cnt==k+1) {
-                int sum = 0; 
-                for(int v: visited) {
-                    if(v!=0) {
-                        sum++;
-                    } 
-                }
-
-                answer = Integer.max(answer, sum);
+            int sum = 0; 
+            for(int v: visited) {
+                if(v!=0) sum++;
             }
+
+            answer = Integer.max(answer, sum);
+        }
         
         for(int t=0; t<3; t++) {
             bfs(s, n, cnt, t);
-            
             dfs(s, n, cnt+1, k);
             
             for(int i= 0; i<n; i++) {
                 if(visited[i]>=cnt+1) visited[i]=0;
             }
         }
-
-        
     }
     
     void bfs(int s, int n, int cnt, int t) {
@@ -83,6 +76,5 @@ class Solution {
                 }
             }
         }
-        
     }
 }
